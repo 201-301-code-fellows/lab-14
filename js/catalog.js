@@ -1,74 +1,73 @@
-/* global Product, Cart */
-
+/* global Cart */
 'use strict';
 
-// Set up an empty cart for use on this page.
-const cart = new Cart([]);
+// Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
+const table = document.getElementById('cart');
+table.addEventListener('click', removeItemFromCart);
+let cart;
 
-// On screen load, we call this method to put all of the product options
-// (the things in the Product.allProducts array) into the drop down list.
-function populateForm() {
-  //TODO: Add an <option> tag inside the form's select for each product
-  const selectElement = document.getElementById('items');
-  for (let i in Product.allProducts) {
-    const optionElement = document.createElement('option');
-    optionElement.innerText = Product.allProducts[i].name;
-    optionElement.value = Product.allProducts[i].name;
-    selectElement.appendChild(optionElement);
+function loadCart() {
+  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  cart = new Cart(cartItems.items);
+}
+
+// Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
+function renderCart() {
+  loadCart();
+  clearCart();
+  showCart();
+}
+
+// TODO: Remove all of the rows (tr) in the cart table (tbody)
+function clearCart() {
+  // localStorage.clear();
+  const tbody = document.querySelectorAll('tbody>tr');
+  for (let tr of tbody) {
+    tr.remove();
   }
 }
 
-// When someone submits the form, we need to add the selected item to the cart
-// object, save the whole thing back to local storage and update the screen
-// so that it shows the # of items in the cart and a quick preview of the cart itself.
-function handleSubmit(event) {
-  event.preventDefault();
-  // TODO: Prevent the page from reloading
+// TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
+function showCart() {
+  let tbody = document.querySelector('tbody');
+  for (let i in cart.items) {
+    const tr = document.createElement('tr');
+    tr.setAttribute('class', 'row');
+    const tdName = document.createElement('td');
+    tdName.innerText = cart.items[i][0];
+    const tdAmount = document.createElement('td');
+    tdAmount.innerText = cart.items[i][1];
+    const xButton = document.createElement('a');
+    const tdButton = document.createElement('td');
+    xButton.innerText = 'x';
+    xButton.id = i;
+    tbody.appendChild(tr);
+    tr.appendChild(tdButton);
+    tdButton.appendChild(xButton);
+    tr.appendChild(tdAmount);
+    tr.appendChild(tdName);
+  }
+}
+// TODO: Find the table body
+// TODO: Iterate over the items in the cart
+// TODO: Create a TR
+// TODO: Create a TD for the delete link, quantity,  and the item
+// TODO: Add the TR to the TBODY and each of the TD's to the TR
 
-  // Do all the things ...
-  addSelectedItemToCart();
-  cart.saveToLocalStorage();
-  updateCounter();
-  updateCartPreview();
-  let formID = document.getElementById('catalog');
-  formID.reset()
+function removeItemFromCart(event) {
+  const deleteRows = document.querySelectorAll('.row');
+  for (let row of deleteRows) {
+    row.remove();
+  }
+
+  cart.removeItem(event.target.id);
+  renderCart();
+  localStorage.clear();
+  localStorage.setItem('cart', JSON.stringify(cart));
+  // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  // TODO: Save the cart back to local storage
+  // TODO: Re-draw the cart table
 }
 
-// TODO: Add the selected item and quantity to the cart
-function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
-  // TODO: get the quantity
-  // TODO: using those, add one item to the Cart
-  let itemName = document.getElementById('items').value
-  let quantity = document.getElementById('quantity').value
-  cart.addItem(itemName, quantity);
-}
-
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {
-  let cartCount = document.getElementById('itemCount')
-  cartCount.innerHTML = cart.items.length;
-  
-}
-
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-function updateCartPreview() {
-  // TODO: Get the item and quantity from the form
-  // TODO: Add a new element to the cartContents div with that information
-
-  const cartContents = document.getElementById('cartContents');
-  const newItemtext = document.createElement('li');
-  newItemtext.innerText = `${document.getElementById('items').value} - ${
-    document.getElementById('quantity').value}`;
-    cartContents.appendChild(newItemtext)
-}
-
-// Set up the "submit" event listener on the form.
-// This is the trigger for the app. When a user "submits" the form, it will
-// Call that handleSubmit method above and kick off the whole process
-const catalogForm = document.getElementById('catalog');
-catalogForm.addEventListener('submit', handleSubmit);
-
-// Before anything else of value can happen, we need to fill in the select
-// drop down list in the form.
-populateForm();
+// This will initialize the page and draw the cart on screen
+renderCart();

@@ -29,6 +29,7 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+  let tbody = document.querySelector('tbody');
   for (let i in cart.items) {
     const tr = document.createElement('tr');
     tr.setAttribute('class', 'row');
@@ -39,13 +40,12 @@ function showCart() {
     const xButton = document.createElement('a');
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
-    xButton.id = i
+    xButton.id = i;
     tbody.appendChild(tr);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
     tr.appendChild(tdAmount);
     tr.appendChild(tdName);
-
   }
 }
 // TODO: Find the table body
@@ -59,7 +59,7 @@ function removeItemFromCart(event) {
   for (let row of deleteRows) {
     row.remove();
   }
-  
+
   cart.removeItem(event.target.id);
   renderCart();
   localStorage.clear();
