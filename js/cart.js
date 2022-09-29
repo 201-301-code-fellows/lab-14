@@ -39,12 +39,13 @@ function showCart() {
     const xButton = document.createElement('a');
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
-    xButton.id = cart.items[i][0]
+    xButton.id = i
     table.appendChild(tr);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
     tr.appendChild(tdAmount);
     tr.appendChild(tdName);
+
   }
 }
 // TODO: Find the table body
@@ -58,8 +59,8 @@ function removeItemFromCart(event) {
   for (let row of deleteRows) {
     row.remove();
   }
-  console.log(event.target)
-  cart.removeItem(event);
+  
+  cart.removeItem(event.target.id);
   renderCart();
   localStorage.clear();
   localStorage.setItem('cart', JSON.stringify(cart));
