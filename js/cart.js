@@ -39,6 +39,7 @@ function showCart() {
     const xButton = document.createElement('a');
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
+    xButton.id = cart.items[i][0]
     table.appendChild(tr);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
