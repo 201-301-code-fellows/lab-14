@@ -29,7 +29,8 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-  for (let i in cart.items) {
+  let tbody = document.querySelector('tbody')
+  for (let i in cart.items)  {
     const tr = document.createElement('tr');
     tr.setAttribute('class', 'row');
     const tdName = document.createElement('td');
@@ -40,12 +41,12 @@ function showCart() {
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
     xButton.id = i
-    table.appendChild(tr);
+    tbody.appendChild(tr);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
     tr.appendChild(tdAmount);
     tr.appendChild(tdName);
-
+    
   }
 }
 // TODO: Find the table body

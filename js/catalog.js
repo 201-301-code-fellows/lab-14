@@ -58,8 +58,8 @@ function updateCartPreview() {
 
   const cartContents = document.getElementById('cartContents');
   const newItemtext = document.createElement('li');
-  newItemtext.innerText = `${document.getElementById('items').value} - ${
-    document.getElementById('quantity').value}x`;
+  newItemtext.innerText = `${document.getElementById('items').value} - x${
+    document.getElementById('quantity').value}`;
     cartContents.appendChild(newItemtext)
 }
 
