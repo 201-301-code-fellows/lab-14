@@ -54,6 +54,15 @@ function showCart() {
 }
 
 function removeItemFromCart(event) {
+
+  const deleteRows = document.querySelectorAll('.row'); 
+  for (let row of deleteRows) {
+    row.remove(); 
+  } 
+  cart.removeItem(event.target.id); 
+  renderCart();
+  localStorage.clear(); 
+  localStorage.setItem('cart', JSON.stringify(cart)); 
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
