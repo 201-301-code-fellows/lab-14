@@ -8,7 +8,8 @@ header{
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: rgb(67, 67, 67);
+  background-color: #0a0908;
+  color: white;
 }
 ul{
   display: flex;
@@ -26,17 +27,34 @@ li:last-child{
 }
 a{
   text-decoration: none;
-  color: black;
+  color: white;
   font-size: 1.3rem;
 }
 
 body>header>h1{
   margin-left: 20px;
   font-size: 1.5rem;
+  margin: 5px;
 }
 #itemCount{
   border: red solid 1px;
   border-radius: 50%;
   background-color: white;
 
+}
+
+/* body//main */
+main{
+  display: flex;
+
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  border: black solid 1px;
+  background-color: #22333b;
+  box-shadow: 5px 10px #0a0908;
+  height: 50vh;
+  margin: 30px;
+  border-radius: 0px 0px 10px 10px;
 }
