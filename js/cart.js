@@ -40,7 +40,7 @@ function showCart() {
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
     xButton.id = i
-    table.appendChild(tr);
+    tbody.appendChild(tr);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
     tr.appendChild(tdAmount);
