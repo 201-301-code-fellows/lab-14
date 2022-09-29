@@ -36,11 +36,10 @@ function showCart() {
     tdName.innerText = cart.items[i][0];
     const tdAmount = document.createElement('td');
     tdAmount.innerText = cart.items[i][1];
-    const xButton = document.createElement('button');
+    const xButton = document.createElement('a');
     const tdButton = document.createElement('td');
     xButton.innerText = 'x';
     table.appendChild(tr);
-    xButton.setAttribute('id', cart.items[i][0]);
     tr.appendChild(tdButton);
     tdButton.appendChild(xButton);
     tr.appendChild(tdAmount);
@@ -58,7 +57,8 @@ function removeItemFromCart(event) {
   for (let row of deleteRows) {
     row.remove();
   }
-  cart.removeItem(event.target.id);
+  console.log(event.target)
+  cart.removeItem(event);
   renderCart();
   localStorage.clear();
   localStorage.setItem('cart', JSON.stringify(cart));
