@@ -29,6 +29,23 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
+  const tr = document.createElement('tr'); 
+  tr.setAttribute('class', 'row'); 
+  const tdName = document.createElement('td'); 
+  tdName.innerText = cart.items[i][0]; 
+  const tdAmount = document.createElement('td'); 
+  tdAmount.innerText = cart.items[i][1]; 
+  const xButton = document.createElement('button'); 
+  const tdButton = document.createElement('td'); 
+  xButton.innerText = 'x'; 
+  table.appendChild(tr); 
+  xButton.setAttribute('id', cart.items[i][0]); 
+  tr.appendChild(tdButton); 
+  tdButton.appendChild(xButton); 
+  tr.appendChild(tdAmount); 
+  tr.appendChild(tdName); 
+} 
+
   // TODO: Find the table body
   // TODO: Iterate over the items in the cart
   // TODO: Create a TR
