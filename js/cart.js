@@ -29,40 +29,39 @@ function clearCart() {
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
-  const tr = document.createElement('tr'); 
-  tr.setAttribute('class', 'row'); 
-  const tdName = document.createElement('td'); 
-  tdName.innerText = cart.items[i][0]; 
-  const tdAmount = document.createElement('td'); 
-  tdAmount.innerText = cart.items[i][1]; 
-  const xButton = document.createElement('button'); 
-  const tdButton = document.createElement('td'); 
-  xButton.innerText = 'x'; 
-  table.appendChild(tr); 
-  xButton.setAttribute('id', cart.items[i][0]); 
-  tr.appendChild(tdButton); 
-  tdButton.appendChild(xButton); 
-  tr.appendChild(tdAmount); 
-  tr.appendChild(tdName); 
-} 
-
-  // TODO: Find the table body
-  // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+  for (let i in cart.items) {
+    const tr = document.createElement('tr');
+    tr.setAttribute('class', 'row');
+    const tdName = document.createElement('td');
+    tdName.innerText = cart.items[i][0];
+    const tdAmount = document.createElement('td');
+    tdAmount.innerText = cart.items[i][1];
+    const xButton = document.createElement('button');
+    const tdButton = document.createElement('td');
+    xButton.innerText = 'x';
+    table.appendChild(tr);
+    xButton.setAttribute('id', cart.items[i][0]);
+    tr.appendChild(tdButton);
+    tdButton.appendChild(xButton);
+    tr.appendChild(tdAmount);
+    tr.appendChild(tdName);
+  }
 }
+// TODO: Find the table body
+// TODO: Iterate over the items in the cart
+// TODO: Create a TR
+// TODO: Create a TD for the delete link, quantity,  and the item
+// TODO: Add the TR to the TBODY and each of the TD's to the TR
 
 function removeItemFromCart(event) {
-
-  const deleteRows = document.querySelectorAll('.row'); 
+  const deleteRows = document.querySelectorAll('.row');
   for (let row of deleteRows) {
-    row.remove(); 
-  } 
-  cart.removeItem(event.target.id); 
+    row.remove();
+  }
+  cart.removeItem(event.target.id);
   renderCart();
-  localStorage.clear(); 
-  localStorage.setItem('cart', JSON.stringify(cart)); 
+  localStorage.clear();
+  localStorage.setItem('cart', JSON.stringify(cart));
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
