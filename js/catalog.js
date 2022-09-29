@@ -59,8 +59,8 @@ function updateCartPreview() {
   const cartContents = document.getElementById('cartContents');
   const newItemtext = document.createElement('li');
   newItemtext.innerText = `${document.getElementById('items').value} - ${
-    document.getElementById('quantity').value
-  }x`;
+    document.getElementById('quantity').value}x`;
+    cartContents.appendChild(newItemtext)
 }
 
 // Set up the "submit" event listener on the form.
