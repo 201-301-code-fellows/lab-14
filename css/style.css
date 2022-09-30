@@ -2,6 +2,11 @@
 body {
   font-family: sans-serif;
   color: #ddd;
+  background-color: #222;
+}
+
+main {
+  margin: 0 10vw;
 }
 
 /* nav bar */
@@ -34,6 +39,7 @@ a {
   text-decoration: none;
   color: white;
   font-size: 1.3rem;
+  margin-left: 25px;
 }
 
 body > header > h1 {
@@ -42,7 +48,7 @@ body > header > h1 {
   margin: 5px;
 }
 #itemCount {
-  color: black;
+  color: rgb(217, 188, 188);
   padding: 3px;
   background-color: rgb(60, 48, 48);
   margin-left: 2px;
@@ -57,7 +63,7 @@ main {
   flex-direction: column;
   border: black solid 1px;
   background-color: #22333b;
-  box-shadow: 5px 10px #0a0908;
+  box-shadow: 5px 10px 3px #0a090897;
   height: 50vh;
   margin: 30px;
   border-radius: 0px 0px 10px 10px;
@@ -81,4 +87,38 @@ th:first-child {
 }
 div#cart-container.card {
   width: 60vw;
+}
+
+footer {
+  background-color: #0a0908;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  height: 70px;
+}
+
+input[type='submit'] {
+  padding: 10px;
+  background-color: #106203;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  margin: 20px;
+  transition: all 0.144s ease-in-out;
+  box-shadow: 5px 10px 3px #0a090897;
+}
+
+input[type='submit']:hover {
+  background-color: #158b03;
+  transform: translateY(-4px);
+  box-shadow: 5px 15px 3px #0a090897;
+}
+
+input[type='submit']:active {
+  transform: translateY(-2px);
 }
