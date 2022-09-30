@@ -1,55 +1,58 @@
 /* TODO: Make it awesome */
-body{
+body {
   font-family: sans-serif;
   color: #ddd;
 }
 
 /* nav bar */
-header{
+header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   background-color: #0a0908;
   color: white;
 }
-ul{
+ul {
   display: flex;
   justify-content: space-around;
   width: 30%;
   margin-right: 20px;
   align-items: center;
 }
-li{
+li {
   padding-top: 8px;
+  list-style: none;
+}
+li a {
+  width: 30px;
 }
 
-li:last-child{
+li:last-child {
   margin-left: 10px;
 }
-a{
+a {
   text-decoration: none;
   color: white;
   font-size: 1.3rem;
 }
 
-body>header>h1{
+body > header > h1 {
   margin-left: 20px;
   font-size: 1.5rem;
   margin: 5px;
 }
-#itemCount{
-  border: red solid 1px;
-  border-radius: 50%;
-  background-color: white;
-
+#itemCount {
+  color: black;
+  padding: 3px;
+  background-color: rgb(60, 48, 48);
+  margin-left: 2px;
 }
 
 /* body//main */
-main{
+main {
   display: flex;
-
 }
-.card{
+.deck {
   display: flex;
   flex-direction: column;
   border: black solid 1px;
@@ -58,25 +61,24 @@ main{
   height: 50vh;
   margin: 30px;
   border-radius: 0px 0px 10px 10px;
- 
 }
 
-.card>header>h1{
+.card > header > h1 {
   color: rgb(211, 13, 13);
   height: 35px;
   display: flex;
   align-items: center;
 }
-th{
+th {
   padding: 5px;
   background-color: #0a0908;
   height: 25px;
   padding-top: 15px;
 }
 
-th:first-child{
+th:first-child {
   color: rgb(211, 13, 13);
 }
-div#cart-container.card{
+div#cart-container.card {
   width: 60vw;
 }
