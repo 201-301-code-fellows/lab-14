@@ -1,6 +1,7 @@
 /* TODO: Make it awesome */
 body{
   font-family: sans-serif;
+  color: #ddd;
 }
 
 /* nav bar */
@@ -57,4 +58,25 @@ main{
   height: 50vh;
   margin: 30px;
   border-radius: 0px 0px 10px 10px;
+ 
+}
+
+.card>header>h1{
+  color: rgb(211, 13, 13);
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+th{
+  padding: 5px;
+  background-color: #0a0908;
+  height: 25px;
+  padding-top: 15px;
+}
+
+th:first-child{
+  color: rgb(211, 13, 13);
+}
+div#cart-container.card{
+  width: 60vw;
 }
