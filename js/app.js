@@ -16,7 +16,7 @@ Cart.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
 };
 
-Cart.prototype.removeItem = function (item) {
+Cart.prototype.removeItem = function (item) { //update prototype
     this.items.splice(item, 1);
     localStorage.clear();
     this.saveToLocalStorage();
